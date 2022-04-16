@@ -1,65 +1,29 @@
-import {useState, useEffect} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import config from "../config/config.json";
-import {
-    useFonts,
-    // DarkerGrotesque_300Light,
-    DarkerGrotesque_400Regular,
-    // DarkerGrotesque_500Medium,
-    // DarkerGrotesque_600SemiBold,
-    // DarkerGrotesque_700Bold,
-    // DarkerGrotesque_800ExtraBold,
-    // DarkerGrotesque_900Black
-} from '@expo-google-fonts/darker-grotesque';
+import {useEffect} from "react";
+import {Text, View} from "react-native";
+import {Typography} from '../styles';
+import {products as productsModel} from "../models/products";
 
-function StockList() {
-    let [fontsLoaded] = useFonts({
-        DarkerGrotesque_400Regular,
-    });
-
-    const [products, setProducts] = useState([]);
-
-    useEffect(() => {
-        fetch(`${config.base_url}/products?api_key=${config.api_key}`)
-            .then(response => response.json())
-            .then(result => setProducts(result.data));
+function StockList({products, setProducts}) {
+    useEffect(async () => {
+        setProducts(await productsModel.getProducts());
     }, []);
 
-    const list = products.map((product, index) => <Text style={styles.stockList}
+    const list = products.map((product, index) => <Text style={Typography.stockList}
                                                         key={index}>{product.name} - {product.stock}</Text>);
-
-    if (!fontsLoaded) {
-        return <Text>Not loaded yet</Text>;
-    } else {
-        return (
-            <View>
-                {list}
-            </View>
-        );
-    }
-
-}
-
-
-export default function Stock() {
     return (
         <View>
-            <Text style={styles.title}>Lagerförteckning</Text>
-            <StockList/>
+            {list}
         </View>
     );
 }
 
-const styles = StyleSheet.create({
-    title: {
-        fontSize: 33.75,
-        alignSelf: 'center',
-        fontFamily: 'DarkerGrotesque_400Regular'
-    },
-    stockList: {
-        fontSize: 22.5,
-        lineHeight: 33.75,
-        alignSelf: 'center',
-        fontFamily: 'DarkerGrotesque_400Regular',
-    },
-});
+export default function Stock({products, setProducts}) {
+    return (
+        <View>
+            <Text style={Typography.header2}>Lagerförteckning</Text>
+            <StockList products={products} setProducts={setProducts}/>
+        </View>
+    )
+}
+
+export {Stock}
