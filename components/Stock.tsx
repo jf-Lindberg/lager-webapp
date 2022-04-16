@@ -4,11 +4,15 @@ import {Typography} from '../styles';
 import {products as productsModel} from "../models/products";
 
 function StockList({products, setProducts}) {
-    useEffect(async () => {
-        setProducts(await productsModel.getProducts());
+    useEffect(() => {
+        async function getProducts() {
+            const response = await productsModel.getProducts();
+            setProducts(response);
+        }
+        getProducts();
     }, []);
 
-    const list = products.map((product, index) => <Text style={Typography.stockList}
+    const list = products.map((product: object, index: number) => <Text style={Typography.stockList}
                                                         key={index}>{product.name} - {product.stock}</Text>);
     return (
         <View>

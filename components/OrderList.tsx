@@ -3,10 +3,11 @@ import { View, Text, Button } from "react-native";
 import config from "./../config/config.json";
 import orders from "../models/orders";
 import {Typography} from '../styles';
+import {Order} from "../interfaces/order";
 
 export default function OrderList({ route, navigation }) {
     const { reload } = route.params || false;
-    const [allOrders, setAllOrders] = useState([]);
+    const [allOrders, setAllOrders] = useState<Array<Order>>([]);
 
     if (reload) {
         reloadOrders();

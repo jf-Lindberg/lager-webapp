@@ -10,8 +10,8 @@ const orders = {
 
         return result.data;
     },
-    pickOrder: async function pickOrder(order: Partial<Order>) {
-        await Promise.all(order.order_items.map(async (order_item: Partial<OrderItem>) =>
+    pickOrder: async function pickOrder(order: Order) {
+        await Promise.all(order.order_items.map(async (order_item: OrderItem) =>
         {
             let changedProduct = {
                 id: order_item.product_id,
