@@ -9,10 +9,7 @@ export default function OrderList({ route, navigation }) {
     const { reload } = route.params || false;
     const [allOrders, setAllOrders] = useState<Array<Order>>([]);
 
-    if (reload) {
-        reloadOrders();
-    }
-
+    if (reload) reloadOrders();
     async function reloadOrders() {
         setAllOrders(await orders.getOrders());
     }

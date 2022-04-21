@@ -16,3 +16,15 @@ export const stockList = {
     alignSelf: 'center',
     fontFamily: 'DarkerGrotesque_400Regular'
 };
+
+export const label = {
+    fontWeight: "bold",
+    marginTop: 22.5,
+    marginRight: 0,
+    marginBottom: 0,
+    marginLeft: 0
+};
+
+export const deliveryListItem = {
+    fontSize: 22.25,
+};

@@ -7,6 +7,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Pick from "./components/Pick";
+import Deliveries from "./components/Deliveries";
 import {Base} from './styles';
 
 import {
@@ -24,6 +25,7 @@ import {Text} from "react-native";
 const routeIcons: { [key: string]: string } = {
     "Lager": "home",
     "Plock": "list",
+    "Inleveranser": "car-outline"
 };
 const Tab = createBottomTabNavigator();
 
@@ -56,6 +58,9 @@ export default function App() {
                         </Tab.Screen>
                         <Tab.Screen name="Plock">
                             {() => <Pick setProducts={setProducts}/>}
+                        </Tab.Screen>
+                        <Tab.Screen name="Inleveranser">
+                            {() => <Deliveries products={products} setProducts={setProducts}/>}
                         </Tab.Screen>
                     </Tab.Navigator>
                 </NavigationContainer>

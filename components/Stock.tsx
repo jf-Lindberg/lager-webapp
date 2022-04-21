@@ -2,6 +2,7 @@ import {useEffect} from "react";
 import {Text, View} from "react-native";
 import {Typography} from '../styles';
 import {products as productsModel} from "../models/products";
+import {Product} from "../interfaces/product";
 
 function StockList({products, setProducts}) {
     useEffect(() => {
@@ -12,7 +13,7 @@ function StockList({products, setProducts}) {
         getProducts();
     }, []);
 
-    const list = products.map((product: object, index: number) => <Text style={Typography.stockList}
+    const list = products.map((product: Product, index: number) => <Text style={Typography.stockList}
                                                         key={index}>{product.name} - {product.stock}</Text>);
     return (
         <View>
