@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { View, Text, Button } from "react-native";
 import config from "./../config/config.json";
 import orders from "../models/orders";
-import {Typography} from '../styles';
+import {Base, Typography} from '../styles';
 import {Order} from "../interfaces/order";
 
 export default function OrderList({ route, navigation }) {
@@ -35,7 +35,7 @@ export default function OrderList({ route, navigation }) {
         });
 
     return (
-        <View>
+        <View style={Base.base}>
             <Text style={Typography.header2}>Ordrar</Text>
             {listOfOrders}
         </View>

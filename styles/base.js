@@ -10,7 +10,12 @@ export const mainImg = {
 
 export const base = {
     flex: 1,
-    backgroundColor: 'transparent',
+    backgroundColor: 'rgba(255, 246, 143, 0.3)',
     paddingLeft: 12,
     paddingRight: 12
+};
+
+export const header = {
+    padding: 11.25,
+    backgroundColor: 'rgba(255, 246, 143, 0.3)'
 };
