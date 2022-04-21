@@ -6,8 +6,6 @@ import deliveries from "../models/deliveries";
 import {Base, Typography, DeliveryListStyling} from "../styles/index";
 import config from "../config/config.json";
 
-
-// CHECK WHERE ROUTE COMES FROM
 export default function DeliveriesList({ route, navigation }) {
     const { reload } = route.params || false;
     const [allDeliveries, setAllDeliveries] = useState<Array<Delivery>>([]);
@@ -25,7 +23,7 @@ export default function DeliveriesList({ route, navigation }) {
 
     const listOfDeliveries = allDeliveries
         .map((delivery, index) => {
-            return <View key={delivery.product_id} style={DeliveryListStyling.deliveriesList}>
+            return <View key={delivery.id} style={DeliveryListStyling.deliveriesList}>
                 <Text key={delivery.product_name} style={Typography.deliveryListItem}>Produkt: {delivery.product_name}</Text>
                 <Text key={delivery.amount}>Antal: {delivery.amount}</Text>
                 <Text key={delivery.delivery_date}>Datum: {delivery.delivery_date}</Text>
@@ -35,7 +33,8 @@ export default function DeliveriesList({ route, navigation }) {
     return (
         <ScrollView style={Base.base}>
             <Text style={Typography.header2}>Inleveranser</Text>
-            {listOfDeliveries}
+            {allDeliveries.length === 0 && <Text style={Typography.textCenter}>Det finns inte några leveranser att visa.</Text>}
+            {allDeliveries.length > 0 && listOfDeliveries}
             <Button
                 title="Skapa ny inleverans"
                 onPress={() => {

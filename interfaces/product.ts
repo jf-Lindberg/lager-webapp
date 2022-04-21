@@ -6,7 +6,7 @@ interface Product {
     specifiers: string,
     stock: number,
     location: string,
-    price: string,
+    price: string | number,
     api_key: string
 }
 

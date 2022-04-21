@@ -28,3 +28,7 @@ export const label = {
 export const deliveryListItem = {
     fontSize: 22.25,
 };
+
+export const textCenter = {
+    textAlign: "center"
+};

@@ -17,7 +17,7 @@ function DateDropDown(props) {
             )}
             {(show || Platform.OS === "ios") && (
                 <DateTimePicker
-                    onChange={(event, date) => {
+                    onChange={(event: Event, date: Date) => {
                         setDropDownDate(date);
 
                         props.setDelivery({

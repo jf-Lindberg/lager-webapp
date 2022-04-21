@@ -9,10 +9,11 @@ const deliveries = {
         return result.data;
     },
     addDelivery: async function addDelivery(delivery: Delivery) {
+        const currentDate = new Date().toLocaleDateString('se-SV');
         let deliveryToAdd = {
             product_id: delivery.product_id,
             amount: delivery.amount,
-            delivery_date: delivery.delivery_date,
+            delivery_date: delivery.delivery_date ?? currentDate,
             comment: delivery.comment,
             api_key: config.api_key
         }

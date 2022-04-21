@@ -23,6 +23,7 @@ function ProductDropDown(props) {
                 props.setDelivery({ ...props.delivery, product_id: itemValue });
                 props.setCurrentProduct(productsHash[itemValue]);
             }}>
+            <Picker.Item value='' label='Välj en produkt'/>
             {itemsList}
         </Picker>
     );

@@ -17,3 +17,11 @@ export const base = {
 export const header = {
     padding: 11.25
 };
+
+
+export const button = {
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 4,
+    elevation: 3,
+};

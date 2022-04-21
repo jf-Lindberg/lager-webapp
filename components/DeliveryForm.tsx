@@ -15,8 +15,6 @@ export default function DeliveryForm({navigation, setProducts}) {
     const [delivery, setDelivery] = useState<Partial<Delivery>>({});
 
     async function addDelivery() {
-        console.log(`CURRENT PRODUCT: ${JSON.stringify(currentProduct)}`);
-        console.log(`DELIVERY: ${JSON.stringify(delivery)}`);
         try {
             await deliveries.addDelivery(delivery);
             let changedProduct = {
@@ -66,7 +64,6 @@ export default function DeliveryForm({navigation, setProducts}) {
                     delivery={delivery}
                     setDelivery={setDelivery}
                 />
-
                 <Text style={{...Typography.label}}>Kommentar</Text>
                 <TextInput
                     style={{...Form.input}}
@@ -78,6 +75,7 @@ export default function DeliveryForm({navigation, setProducts}) {
             </KeyboardAvoidingView>
 
             <Button
+                style={Base.button}
                 title="Gör inleverans"
                 onPress={() => {
                     addDelivery();
