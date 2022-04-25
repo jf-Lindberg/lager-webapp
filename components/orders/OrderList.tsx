@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { View, Text, Button } from "react-native";
-import config from "./../config/config.json";
-import orders from "../models/orders";
-import {Base, Typography} from '../styles';
-import {Order} from "../interfaces/order";
+import config from "../../config/config.json";
+import orders from "../../models/orders";
+import {Base, Typography} from '../../styles';
+import {Order} from "../../interfaces/order";
 
 export default function OrderList({ route, navigation }) {
     const { reload } = route.params || false;

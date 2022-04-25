@@ -1,8 +1,8 @@
 import {View, Text, Button} from "react-native";
-import orderModel from "../models/orders";
-import {products as productsModel} from "../models/products";
-import {OrderItem} from "../interfaces/order_item";
-import {Typography} from "../styles/index";
+import orderModel from "../../models/orders";
+import {products as productsModel} from "../../models/products";
+import {OrderItem} from "../../interfaces/order_item";
+import {Typography} from "../../styles";
 
 export default function PickList({route, navigation, setProducts}) {
     const {order} = route.params;

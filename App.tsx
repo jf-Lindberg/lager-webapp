@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {StatusBar} from 'expo-status-bar';
 import {Ionicons} from '@expo/vector-icons';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -6,9 +6,12 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Header from "./components/Header";
 import Home from "./components/Home";
-import Pick from "./components/Pick";
-import Deliveries from "./components/Deliveries";
+import Pick from "./components/orders/Pick";
+import Deliveries from "./components/deliveries/Deliveries";
 import {Base} from './styles';
+import Auth from './components/auth/Auth';
+import AuthModel from './models/auth';
+import Invoices from './components/invoices/Invoices';
 
 import {
     useFonts,
@@ -25,12 +28,19 @@ import {Text} from "react-native";
 const routeIcons: { [key: string]: string } = {
     "Lager": "home",
     "Plock": "list",
-    "Inleveranser": "car-outline"
+    "Inleveranser": "car-outline",
+    "Faktura": "cash-outline",
+    "Logga in": "enter-outline"
 };
 const Tab = createBottomTabNavigator();
 
 export default function App() {
     const [products, setProducts] = useState([]);
+    const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(false);
+
+    useEffect(async () => {
+        setIsLoggedIn(await AuthModel.loggedIn())
+    }, []);
 
     let [fontsLoaded] = useFonts({
         DarkerGrotesque_400Regular,
@@ -62,6 +72,14 @@ export default function App() {
                         <Tab.Screen name="Inleveranser">
                             {() => <Deliveries products={products} setProducts={setProducts}/>}
                         </Tab.Screen>
+                        {isLoggedIn ?
+                            <Tab.Screen name="Faktura">
+                                {() => <Invoices setIsLoggedIn={setIsLoggedIn}/>}
+                            </Tab.Screen>:
+                            <Tab.Screen name="Logga in">
+                                {() => <Auth setIsLoggedIn={setIsLoggedIn} />}
+                            </Tab.Screen>
+                        }
                     </Tab.Navigator>
                 </NavigationContainer>
                 <StatusBar style="auto"/>

@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import {View, ScrollView, Text, Button} from "react-native";
-import {Delivery} from "../interfaces/delivery";
-import deliveries from "../models/deliveries";
+import {Delivery} from "../../interfaces/delivery";
+import deliveries from "../../models/deliveries";
 
-import {Base, Typography, DeliveryListStyling} from "../styles/index";
-import config from "../config/config.json";
+import {Base, Typography, DeliveryListStyling} from "../../styles";
+import config from "../../config/config.json";
 
 export default function DeliveriesList({ route, navigation }) {
     const { reload } = route.params || false;

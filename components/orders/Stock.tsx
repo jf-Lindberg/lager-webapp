@@ -1,8 +1,8 @@
 import {useEffect} from "react";
 import {Text, View} from "react-native";
-import {Typography} from '../styles';
-import {products as productsModel} from "../models/products";
-import {Product} from "../interfaces/product";
+import {Typography} from '../../styles';
+import {products as productsModel} from "../../models/products";
+import {Product} from "../../interfaces/product";
 
 function StockList({products, setProducts}) {
     useEffect(() => {

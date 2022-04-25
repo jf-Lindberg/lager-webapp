@@ -10,6 +10,7 @@ interface Order {
     status: string,
     status_id: number,
     order_items: Array<OrderItem>,
+    api_key: string
 }
 
 export { Order };

@@ -1,12 +1,12 @@
 import {useState} from 'react';
 import {ScrollView, Text, TextInput, Button, KeyboardAvoidingView} from "react-native";
-import {Base, Typography, Form} from '../styles';
+import {Base, Typography, Form} from '../../styles';
 
-import config from "../config/config.json";
-import deliveries from "../models/deliveries";
-import {Delivery} from '../interfaces/delivery';
-import {products as productsModel, products} from "../models/products";
-import {Product} from "../interfaces/product";
+import config from "../../config/config.json";
+import deliveries from "../../models/deliveries";
+import {Delivery} from '../../interfaces/delivery';
+import {products as productsModel, products} from "../../models/products";
+import {Product} from "../../interfaces/product";
 import {ProductDropDown} from "./ProductDropDown";
 import {DateDropDown} from "./DateTimePicker";
 
@@ -64,6 +64,7 @@ export default function DeliveryForm({navigation, setProducts}) {
                     delivery={delivery}
                     setDelivery={setDelivery}
                 />
+
                 <Text style={{...Typography.label}}>Kommentar</Text>
                 <TextInput
                     style={{...Form.input}}
