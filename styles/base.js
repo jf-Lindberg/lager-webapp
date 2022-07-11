@@ -3,15 +3,16 @@ export const container = {
 };
 
 export const mainImg = {
-    width: 320,
-    height: 240,
+    width: 400,
+    height: 140,
     alignSelf: 'center',
 };
 
 export const base = {
     flex: 1,
     paddingLeft: 12,
-    paddingRight: 12
+    paddingRight: 12,
+    backgroundColor: "white"
 };
 
 export const header = {

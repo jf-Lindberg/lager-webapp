@@ -1,8 +1,9 @@
-import {View} from 'react-native';
+import {View, Image} from 'react-native';
 import {SafeAreaView} from "react-native-safe-area-context";
 import {StatusBar} from "expo-status-bar";
 import {Base} from '../styles';
 import {Stock} from "./orders/Stock"
+
 
 export default function Home({products, setProducts}) {
     return (
