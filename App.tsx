@@ -4,14 +4,17 @@ import {Ionicons} from '@expo/vector-icons';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+
+import {Base} from './styles';
+
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Pick from "./components/orders/Pick";
 import Deliveries from "./components/deliveries/Deliveries";
-import {Base} from './styles';
 import Auth from './components/auth/Auth';
 import AuthModel from './models/auth';
 import Invoices from './components/invoices/Invoices';
+import Ship from './components/ship/Ship';
 
 import {
     useFonts,
@@ -30,6 +33,7 @@ const routeIcons: { [key: string]: string } = {
     "Plock": "list",
     "Inleveranser": "car-outline",
     "Faktura": "cash-outline",
+    "Skicka": "send-outline",
     "Logga in": "enter-outline"
 };
 const Tab = createBottomTabNavigator();
@@ -38,8 +42,11 @@ export default function App() {
     const [products, setProducts] = useState([]);
     const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(false);
 
-    useEffect(async () => {
-        setIsLoggedIn(await AuthModel.loggedIn())
+    useEffect(() => {
+        const checkLoggedIn = async () => {
+            setIsLoggedIn(await AuthModel.loggedIn())
+        };
+        checkLoggedIn().then();
     }, []);
 
     let [fontsLoaded] = useFonts({
@@ -56,6 +63,7 @@ export default function App() {
                         tabBarIcon: ({focused, color, size}) => {
                             let iconName = routeIcons[route.name] || "alert";
 
+                            // @ts-ignore
                             return <Ionicons name={iconName} size={size} color={color}/>;
                         },
                         tabBarActiveTintColor: 'blue',
@@ -72,6 +80,7 @@ export default function App() {
                         <Tab.Screen name="Inleveranser">
                             {() => <Deliveries products={products} setProducts={setProducts}/>}
                         </Tab.Screen>
+                        <Tab.Screen name="Skicka" component={Ship}/>
                         {isLoggedIn ?
                             <Tab.Screen name="Faktura">
                                 {() => <Invoices setIsLoggedIn={setIsLoggedIn}/>}

@@ -1,6 +1,7 @@
 import {Image, Text, View} from 'react-native';
 import {SafeAreaView} from "react-native-safe-area-context";
 import {Base, Typography} from '../styles';
+// @ts-ignore
 import food from "../assets/food.jpg";
 
 

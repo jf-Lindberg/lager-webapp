@@ -5,7 +5,7 @@ import DeliveryForm from './DeliveryForm';
 
 const Stack = createNativeStackNavigator();
 
-export default function Deliveries(props) {
+export default function Deliveries(props: { setProducts: any; }) {
     return (
         <Stack.Navigator initialRouteName="List" screenOptions={{
             headerShown: false

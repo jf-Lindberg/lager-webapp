@@ -44,4 +44,4 @@ const orders = {
     }
 };
 
-export {orders};
+export { orders };

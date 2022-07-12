@@ -5,7 +5,7 @@ export const container = {
 export const mainImg = {
     width: 400,
     height: 140,
-    alignSelf: 'center',
+    alignSelf: 'center' as const,
 };
 
 export const base = {

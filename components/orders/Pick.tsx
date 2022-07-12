@@ -4,7 +4,7 @@ import PickList from './PickList';
 
 const Stack = createNativeStackNavigator();
 
-export default function Pick(props) {
+export default function Pick(props: { setProducts: any; }) {
     return (
         <Stack.Navigator initialRouteName="List" screenOptions={{
             headerShown: false

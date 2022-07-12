@@ -1,19 +1,23 @@
 export const header1 = {
     fontSize: 50.063,
-    textAlign: 'center',
+    textAlign: 'center' as const,
     fontFamily: 'DarkerGrotesque_400Regular'
 };
 
 export const header2 = {
     fontSize: 33.75,
-    alignSelf: 'center',
+    fontFamily: 'DarkerGrotesque_400Regular'
+};
+
+export const header3 = {
+    fontSize: 24.5,
     fontFamily: 'DarkerGrotesque_400Regular'
 };
 
 export const stockList = {
     fontSize: 22.5,
     lineHeight: 33.75,
-    alignSelf: 'center',
+    alignSelf: 'center' as const,
     fontFamily: 'DarkerGrotesque_400Regular'
 };
 

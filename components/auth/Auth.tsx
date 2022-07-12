@@ -5,7 +5,7 @@ import Register from './Register';
 
 const Stack = createNativeStackNavigator();
 
-export default function Auth(props) {
+export default function Auth(props: { setIsLoggedIn: any; }) {
     return (
         <Stack.Navigator initialRouteName="Login" screenOptions={{
             headerShown: false
