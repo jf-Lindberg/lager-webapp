@@ -2,7 +2,7 @@ import {View, Text, Button} from "react-native";
 import {orders} from "../../models/orders";
 import {products as productsModel} from "../../models/products";
 import {OrderItem} from "../../interfaces/order_item";
-import {Typography} from "../../styles";
+import {Base, Typography} from "../../styles";
 
 export default function PickList({route, navigation, setProducts}) {
     const {order} = route.params;
@@ -20,21 +20,22 @@ export default function PickList({route, navigation, setProducts}) {
         }
         return <Text
             key={index}
+            style={Typography.stockList}
         >
             {item.name} - {item.amount} - {item.location}
         </Text>;
     });
 
     return (
-        <View>
+        <View style={Base.base}>
             <Text style={Typography.header2}>Orderinfo</Text>
             <View style={Typography.stockList}>
-                <Text>{order.name}</Text>
-                <Text>{order.address}</Text>
-                <Text>{order.zip} {order.city}</Text>
+                <Text style={Typography.name}>{order.name}</Text>
+                <Text style={Typography.address}>{order.address}</Text>
+                <Text style={Typography.city}>{order.zip} {order.city}</Text>
             </View>
             <Text style={Typography.header2}>Produkter:</Text>
-            <View style={Typography.stockList}>
+            <View>
                 {orderItemsList}
             </View>
             {enoughInStock ? <Button title="Plocka order" onPress={pick}/> :

@@ -22,7 +22,7 @@ import {
     DarkerGrotesque_400Regular,
     // DarkerGrotesque_500Medium,
     // DarkerGrotesque_600SemiBold,
-    // DarkerGrotesque_700Bold,
+    DarkerGrotesque_700Bold,
     // DarkerGrotesque_800ExtraBold,
     // DarkerGrotesque_900Black
 } from '@expo-google-fonts/darker-grotesque';
@@ -51,6 +51,7 @@ export default function App() {
 
     let [fontsLoaded] = useFonts({
         DarkerGrotesque_400Regular,
+        DarkerGrotesque_700Bold
     });
     if (!fontsLoaded) {
         return <Text>Not loaded yet</Text>;
