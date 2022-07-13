@@ -26,3 +26,7 @@ export const button = {
     borderRadius: 4,
     elevation: 3,
 };
+
+export const flexContainer = {
+    display: "flex"
+};

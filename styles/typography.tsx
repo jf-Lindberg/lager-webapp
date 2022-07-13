@@ -50,3 +50,8 @@ export const deliveryListItem = {
 export const textCenter = {
     textAlign: "center"
 };
+
+export const products = {
+    fontSize: 18.5,
+    fontFamily: 'DarkerGrotesque_400Regular'
+};
