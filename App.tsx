@@ -4,6 +4,7 @@ import {Ionicons} from '@expo/vector-icons';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import FlashMessage from "react-native-flash-message";
 
 import {Base} from './styles';
 
@@ -85,14 +86,15 @@ export default function App() {
                         {isLoggedIn ?
                             <Tab.Screen name="Faktura">
                                 {() => <Invoices setIsLoggedIn={setIsLoggedIn}/>}
-                            </Tab.Screen>:
+                            </Tab.Screen> :
                             <Tab.Screen name="Logga in">
-                                {() => <Auth setIsLoggedIn={setIsLoggedIn} />}
+                                {() => <Auth setIsLoggedIn={setIsLoggedIn}/>}
                             </Tab.Screen>
                         }
                     </Tab.Navigator>
                 </NavigationContainer>
                 <StatusBar style="auto"/>
+                <FlashMessage position="top"/>
             </SafeAreaView>
         );
     }

@@ -73,7 +73,9 @@ export default function ShipOrder({route}) {
                         longitude: 15.5869,
                         latitudeDelta: 7,
                         longitudeDelta: 7
-                    }}>
+                    }}
+                    testID="ship-map"
+                >
                     {marker}
                     {locationMarker}
                 </MapView>

@@ -7,8 +7,9 @@ import deliveries from "../../models/deliveries";
 import {Delivery} from '../../interfaces/delivery';
 import {products as productsModel, products} from "../../models/products";
 import {Product} from "../../interfaces/product";
-import {ProductDropDown} from "./ProductDropDown";
-import {DateDropDown} from "./DateTimePicker";
+import ProductDropDown from "./ProductDropDown";
+import DateDropDown from "./DateTimePicker";
+import {showMessage} from "react-native-flash-message";
 
 export default function DeliveryForm({navigation, setProducts}) {
     const [currentProduct, setCurrentProduct] = useState<Partial<Product>>({});
@@ -32,6 +33,10 @@ export default function DeliveryForm({navigation, setProducts}) {
 
     }
 
+    function deliveryValidated() {
+        return (delivery.delivery_date && delivery.amount && delivery.product_name);
+    }
+
     return (
         <ScrollView style={{...Base.base}}>
             <KeyboardAvoidingView
@@ -46,6 +51,7 @@ export default function DeliveryForm({navigation, setProducts}) {
                     delivery={delivery}
                     setDelivery={setDelivery}
                     setCurrentProduct={setCurrentProduct}
+                    testID="delivery-product-dropdown"
                 />
 
                 <Text style={{...Typography.label}}>Antal</Text>
@@ -56,6 +62,7 @@ export default function DeliveryForm({navigation, setProducts}) {
                     }}
                     value={delivery?.amount?.toString()}
                     keyboardType="numeric"
+                    testID="delivery-amount"
                 />
 
                 <Text style={{...Typography.label}}>Datum</Text>
@@ -63,6 +70,7 @@ export default function DeliveryForm({navigation, setProducts}) {
                     style={{...Form.input}}
                     delivery={delivery}
                     setDelivery={setDelivery}
+                    testID="delivery-date-dropdown"
                 />
 
                 <Text style={{...Typography.label}}>Kommentar</Text>
@@ -72,6 +80,7 @@ export default function DeliveryForm({navigation, setProducts}) {
                         setDelivery({...delivery, comment: content})
                     }}
                     value={delivery?.comment}
+                    testID="delivery-comment"
                 />
             </KeyboardAvoidingView>
 
@@ -79,8 +88,17 @@ export default function DeliveryForm({navigation, setProducts}) {
                 style={Base.button}
                 title="Gör inleverans"
                 onPress={() => {
-                    addDelivery();
+                    if (deliveryValidated()) {
+                        addDelivery().then();
+                    } else {
+                        showMessage({
+                            message: "Formuläret ej korrekt ifyllt",
+                            description: "Produkt, antal och datum är obligatoriska fält.",
+                            type: "warning"
+                        })
+                    }
                 }}
+                testID="delivery-button"
             />
         </ScrollView>
     );

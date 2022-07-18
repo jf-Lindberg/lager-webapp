@@ -9,29 +9,36 @@ export default function AuthFields({auth, setAuth, title, submit, navigation}) {
                 <TextInput
                     style={Form.input}
                     onChangeText={(content: string) => {
+                        // validateEmail(content); -- deprecated
+                        // now validated through validateUser in auth model
                         setAuth({...auth, email: content})
                     }}
                     value={auth?.email}
                     keyboardType="email-address"
                     autoCapitalize="none"
                     autoCorrect={false}
+                    testID="email-field"
                 />
                 <Text style={Typography.label}>Lösenord</Text>
                 <TextInput
                     style={Form.input}
                     onChangeText={(content: string) => {
+                        // validatePassword(content); -- deprecated
+                        // now validated on submit through validateUser in auth model
                         setAuth({...auth, password: content})
                     }}
                     value={auth?.password}
                     secureTextEntry={true}
                     autoCapitalize="none"
                     autoCorrect={false}
+                    testID="password-field"
                 />
                 <Button
                     title={title}
                     onPress={() => {
                         submit();
                     }}
+                    accessibilityLabel={`${title} genom att trycka`}
                 />
                 {title === "Logga in" &&
                     <Button

@@ -23,6 +23,7 @@ export default function DeliveriesList({ route, navigation }) {
 
     const listOfDeliveries = allDeliveries
         .map((delivery, index) => {
+            console.log(delivery);
             return <View key={delivery.id} style={DeliveryListStyling.deliveriesList}>
                 <Text key={delivery.product_name} style={Typography.deliveryListItem}>Produkt: {delivery.product_name}</Text>
                 <Text key={delivery.amount}>Antal: {delivery.amount}</Text>

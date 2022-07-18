@@ -2,7 +2,7 @@ import {useState} from "react";
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Platform, Button, View } from "react-native";
 
-function DateDropDown(props) {
+export default function DateDropDown(props) {
     const [dropDownDate, setDropDownDate] = useState<Date>(new Date());
     const [show, setShow] = useState<Boolean>(false);
 
@@ -33,5 +33,3 @@ function DateDropDown(props) {
         </View>
     );
 }
-
-export {DateDropDown};

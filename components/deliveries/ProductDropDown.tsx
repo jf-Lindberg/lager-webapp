@@ -3,7 +3,7 @@ import { Picker } from '@react-native-picker/picker'
 import {Product} from "../../interfaces/product";
 import {products as productModel} from "../../models/products";
 
-function ProductDropDown(props) {
+export default function ProductDropDown(props) {
     const [products, setProducts] = useState<Array<Product>>([]);
     let productsHash: any = {};
 
@@ -28,5 +28,3 @@ function ProductDropDown(props) {
         </Picker>
     );
 }
-
-export {ProductDropDown};

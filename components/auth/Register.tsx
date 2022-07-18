@@ -6,11 +6,12 @@ import AuthFields from './AuthFields';
 export default function Register({navigation}) {
     const [auth, setAuth] = useState<Partial<Auth>>({});
 
-    async function doRegister () {
-        if (auth.email && auth.password) {
+    async function doRegister() {
+        if (AuthModel.validateUser(auth.email, auth.password)) {
             await AuthModel.register(auth.email, auth.password);
             navigation.navigate("Login");
         }
+
     }
 
     return (
